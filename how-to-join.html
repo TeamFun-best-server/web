@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Join PeanutNetwork</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #3e8e41;
+            --secondary: #2d2d2d;
+            --background: #1a1a1a;
+            --text: #ffffff;
+        }
+        
+        body {
+            font-family: 'Press Start 2P', 'Minecraft', Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1607513746994-51f730a44832?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: rgba(45, 45, 45, 0.9);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1.5s ease-out;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 3px 3px 0 #000;
+        }
+        
+        .step {
+            background-color: rgba(45, 45, 45, 0.9);
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid var(--primary);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .step:nth-child(1) { animation-delay: 0.2s; }
+        .step:nth-child(2) { animation-delay: 0.4s; }
+        .step:nth-child(3) { animation-delay: 0.6s; }
+        .step:nth-child(4) { animation-delay: 0.8s; }
+        
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.8em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+        
+        .step:hover h2::after {
+            transform: scaleX(1);
+        }
+        
+        .step-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .step-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
+        }
+        
+        .step-visual {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .minecraft-window {
+            background-color: #1a1a1a;
+            border: 4px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s;
+            transform: perspective(1000px) rotateX(10deg);
+        }
+        
+        .minecraft-window:hover {
+            transform: perspective(1000px) rotateX(5deg) scale(1.03);
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.3);
+        }
+        
+        .window-title {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            margin: -15px -15px 15px -15px;
+            font-size: 0.9em;
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .minecraft-button {
+            display: inline-block;
+            background-color: #3a3a3a;
+            color: white;
+            padding: 8px 15px;
+            margin: 5px;
+            border: 2px solid #555;
+            border-radius: 0;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7em;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 3px 3px 0 #222;
+            position: relative;
+        }
+        
+        .minecraft-button:hover {
+            background-color: #4a4a4a;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 #222;
+        }
+        
+        .minecraft-button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 #222;
+        }
+        
+        .server-address {
+            background-color: #2d2d2d;
+            padding: 10px;
+            border: 2px solid #444;
+            font-family: monospace;
+            margin: 15px 0;
+            display: inline-block;
+            animation: pulseBorder 2s infinite;
+        }
+        
+        @keyframes pulseBorder {
+            0% { border-color: #444; }
+            50% { border-color: var(--primary); }
+            100% { border-color: #444; }
+        }
+        
+        .back-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            margin: 30px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 0 var(--primary-dark);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8em;
+        }
+        
+        .back-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 var(--primary-dark);
+        }
+        
+        .back-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--primary-dark);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Progress indicator */
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #333;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary), #7cff7c);
+            border-radius: 5px;
+            transition: width 0.5s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .step-content {
+                flex-direction: column;
+            }
+            
+            .step-text {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>How to Join PeanutNetwork</h1>
+            <p>Follow these simple steps to join our amazing Minecraft community!</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar" id="joinProgress"></div>
+        </div>
+        
+        <div class="step">
+            <h2>1. Get Minecraft Java Edition</h2>
+            <div class="step-content">
+                <div class="step-text">
+                    <p>To join our server, you'll need the official <strong>Minecraft Java Edition</strong>. Unfortunately, we don't support Bedrock Edition or mobile versions.</p>
+                    <p>If you don't have Minecraft Java Edition yet, you can purchase it from the official <a href="https://www.minecraft.net" target="_blank">Minecraft website</a>.</p>
+                    <p>Make sure your game is updated to at least <strong>version 1.8</strong> (we also support up to 1.21).</p>
+                </div>
+                <div class="step-visual">
+                    <div class="minecraft-window">
+                        <div class="window-title">Minecraft.net</div>
+                        <img src="https://www.minecraft.net/content/dam/minecraft/touchup-2020/minecraft-logo.svg" alt="Minecraft Logo" style="max-width: 80%; margin-bottom: 15px;">
+                        <div class="minecraft-button">GET MINECRAFT</div>
+                        <div class="minecraft-button">LOG IN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <h2>2. Launch Minecraft</h2>
+            <div class="step-content">
+                <div class="step-text">
+                    <p>Open the Minecraft Launcher on your computer and log in with your Mojang or Microsoft account.</p>
+                    <p>Select the <strong>Java Edition</strong> from the versions list (make sure it's version 1.8 or higher).</p>
+                    <p>Click <strong>"PLAY"</strong> to launch the game.</p>
+                </div>
+                <div class="step-visual">
+                    <div class="minecraft-window" style="max-width: 300px;">
+                        <div class="window-title">Minecraft Launcher</div>
+                        <div style="text-align: left; padding: 10px;">
+                            <div style="margin-bottom: 10px;">▶ Java Edition (1.21)</div>
+                            <div style="margin-bottom: 10px; opacity: 0.7;">Bedrock Edition</div>
+                            <div style="margin-bottom: 15px; opacity: 0.7;">Minecraft Dungeons</div>
+                            <div class="minecraft-button" style="width: 100%; text-align: center;">PLAY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <h2>3. Add Our Server</h2>
+            <div class="step-content">
+                <div class="step-text">
+                    <p>Once in the game main menu:</p>
+                    <ol style="padding-left: 20px;">
+                        <li>Click on <strong>"Multiplayer"</strong></li>
+                        <li>Click on <strong>"Add Server"</strong></li>
+                        <li>Enter a server name (like "PhantMC")</li>
+                        <li>Enter our server address:</li>
+                    </ol>
+                    <div class="server-address">play.phantwalker.com</div>
+                    <p>No special ports or settings are needed. Just enter the address as shown above.</p>
+                </div>
+                <div class="step-visual">
+                    <div class="minecraft-window" style="max-width: 350px;">
+                        <div class="window-title">Add Server</div>
+                        <div style="text-align: left; padding: 10px;">
+                            <div style="margin-bottom: 10px;">
+                                <div style="font-size: 0.7em; margin-bottom: 5px;">Server Name</div>
+                                <div style="background: #2d2d2d; padding: 8px; border: 1px solid #444;">PhantMC</div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <div style="font-size: 0.7em; margin-bottom: 5px;">Server Address</div>
+                                <div style="background: #2d2d2d; padding: 8px; border: 1px solid #444;">play.phantwalker.com</div>
+                            </div>
+                            <div class="minecraft-button" style="width: 100%; text-align: center;">DONE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="step">
+            <h2>4. Join and Play!</h2>
+            <div class="step-content">
+                <div class="step-text">
+                    <p>After adding the server:</p>
+                    <ol style="padding-left: 20px;">
+                        <li>Click <strong>"Done"</strong> to save the server</li>
+                        <li>Find "PhantMC" in your server list</li>
+                        <li>Double-click on it to connect</li>
+                    </ol>
+                    <p>That's it! You'll spawn in our lobby where you can explore all the amazing features we offer.</p>
+                    <p>If you have any trouble connecting, check our <a href="#">troubleshooting guide</a> or join our <a href="#">Discord</a> for help.</p>
+                </div>
+                <div class="step-visual">
+                    <div class="minecraft-window" style="max-width: 400px;">
+                        <div class="window-title">Multiplayer</div>
+                        <div style="text-align: left; padding: 10px;">
+                            <div style="background: #3a3a3a; padding: 10px; margin-bottom: 5px; border: 1px solid #555; display: flex; justify-content: space-between;">
+                                <span>PhantMC</span>
+                                <span style="color: var(--primary);">0/200000</span>
+                            </div>
+                            <div style="background: #2d2d2d; padding: 10px; margin-bottom: 5px; border: 1px solid #444; opacity: 0.7;">
+                                Hypixel Network
+                            </div>
+                            <div style="background: #2d2d2d; padding: 10px; margin-bottom: 15px; border: 1px solid #444; opacity: 0.7;">
+                                Mineplex
+                            </div>
+                            <div class="minecraft-button" style="width: 48%; display: inline-block;">JOIN SERVER</div>
+                            <div class="minecraft-button" style="width: 48%; display: inline-block;">EDIT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="back-button">← Back to Main Page</a>
+        </div>
+    </div>
+
+    <script>
+        // Animate progress bar
+        window.onload = function() {
+            const steps = document.querySelectorAll('.step');
+            const progressBar = document.getElementById('joinProgress');
+            
+            // Intersection Observer for step animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const stepIndex = Array.from(steps).indexOf(entry.target);
+                        const progress = ((stepIndex + 1) / steps.length) * 100;
+                        progressBar.style.width = `${progress}%`;
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            steps.forEach(step => observer.observe(step));
+            
+            // Add click effect to all Minecraft buttons
+            document.querySelectorAll('.minecraft-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'translate(2px, 2px)';
+                    this.style.boxShadow = '1px 1px 0 #222';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '3px 3px 0 #222';
+                    }, 200);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
